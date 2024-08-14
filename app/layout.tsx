@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 
 
@@ -27,7 +28,16 @@ export default function RootLayout({
     <html lang="en">
 
       {/* here 'cn' is classname which is working static and dynamically, here fontSans is custom class and variable is it's object  */}
-      <body className={cn('min-h-screen bg-dark-300 font-sans antialiased', fontSans.variable)}>{children}</body>
+      <body className={cn('min-h-screen bg-dark-300 font-sans antialiased', fontSans.variable)}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
