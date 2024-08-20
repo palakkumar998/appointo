@@ -7,6 +7,10 @@ import { Button } from "@/components/ui/button"
 import { Form } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import CustomFormField from "../CustomFormField"
+import SubmitButton from "../SubmitButton"
+import { useState } from "react"
+import { UserFormValidation } from "@/lib/validation"
+import { useRouter } from "next/navigation"
 
 export enum FormFieldType {
 
@@ -21,30 +25,49 @@ export enum FormFieldType {
 }
 
 
-const formSchema = z.object({
-    username: z.string().min(2, {
-        message: "Username must be at least 2 characters.",
-    }),
-})
+
 
 const PatientForm = () => {
+    const router = useRouter()
+
+
+    const [isLoading, setIsLoading] = useState(false);
+
+
     // 1. Define your form.
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof UserFormValidation>>({
+        resolver: zodResolver(UserFormValidation),
         defaultValues: {
-            username: "",
+            name: "",
+            email: "",
+            phone: ""
         },
     })
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
+    async function onSubmit({ name, email, phone }: z.infer<typeof UserFormValidation>) {
+        setIsLoading(true)
+        try {
+
+            // const userData = { name, email, phone }
+            // const user = await createUser(userData);
+
+            // if(user) router.push(`/patients/${user.$id}/register`)
+
+        } catch (error) {
+            console.log(error);
+
+
+        }
     }
+
+
+
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <section className="mb-10 space-y-4">
-                    <h1 className="header" >hi there ! 👋</h1>
+                <section className="mb-8 space-y-4">
+                    <h1 className="header" >Hi there !</h1>
                     <p className="text-dark-700" >Schedule your first Appointement with Appionto</p>
                 </section>
                 <CustomFormField
@@ -57,7 +80,29 @@ const PatientForm = () => {
                     iconAlt="user"
 
                 />
-                <Button type="submit">Submit</Button>
+                <CustomFormField
+                    fieldType={FormFieldType.INPUT}
+                    control={form.control}
+                    name="email"
+                    label="E-mail"
+                    placeholder="xxxx123@gmail.com"
+                    iconSrc="/assets/icons/email.svg"
+                    iconAlt="email"
+
+                />
+                <CustomFormField
+                    fieldType={FormFieldType.PHONE_INPUT}
+                    control={form.control}
+                    name="phone"
+                    label="Phone no."
+                    placeholder="999 (888) 7776"
+
+                    iconAlt="phone"
+
+                />
+                <SubmitButton isLoading={isLoading}>
+                    Get started
+                </SubmitButton>
             </form>
         </Form>
     )

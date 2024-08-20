@@ -1,0 +1,6 @@
+{
+    "files.autoSave": "afterDelay",
+    "editor.fontSize": 13,
+    "editor.renderWhitespace": "selection",
+    "editor.wordWrap": "off"
+}
