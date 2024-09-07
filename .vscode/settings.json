@@ -2,5 +2,12 @@
     "files.autoSave": "afterDelay",
     "editor.fontSize": 13,
     "editor.renderWhitespace": "selection",
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "powermode.presets": "particles",
+    "powermode.combo.location": "off",
+    "powermode.combo.counterSize": 2,
+    "powermode.combo.timeout": 5,
+    "powermode.shake.enabled": false,
+    "powermode.shake.intensity": 2,
+    "powermode.enabled": true
 }
