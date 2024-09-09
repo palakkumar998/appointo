@@ -1,10 +1,13 @@
 
 import RegisterForm from '@/components/ui/forms/RegisterForm'
+import { getUser } from '@/lib/actions/patient.action'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-const Register = () => {
+const Register = async ({ params: { userId } }: SearchParamProps) => {
+
+    const user = await getUser(userId);
     return (
         <div className="flex h-screen max-h-screen">
             <section className="container my-auto relative glow-green">
@@ -17,7 +20,7 @@ const Register = () => {
                 </div>
 
                 {/* //todo Register form here */}
-                <RegisterForm />
+                <RegisterForm user={user} />
 
                 <div className="text-10-regular mt-4 justify-between flex">
                     <p className="justify-items-end text-dark-600 xl:text-left">© 2024 Copyright | Appointo</p>
