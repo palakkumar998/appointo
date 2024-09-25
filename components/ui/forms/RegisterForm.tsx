@@ -70,7 +70,8 @@ const RegisterForm = ({ user }: { user: User }) => {
                 </section>
 
 
-                {/* section - 2 */}
+                {/*//* section - 2 */}
+
                 <section className="space-y-6">
                     <div className="mb-9 space-y-1" >
                         <h2 className="sub-header" >Personal Information</h2>
@@ -105,7 +106,6 @@ const RegisterForm = ({ user }: { user: User }) => {
                         name="phone"
                         label="Phone no."
                         placeholder="999 (888) 7776"
-
                         iconAlt="phone"
 
                     />
@@ -118,9 +118,6 @@ const RegisterForm = ({ user }: { user: User }) => {
                         control={form.control}
                         name="birthDate"
                         label="Date of birth"
-                    // iconSrc="/assets/icons/email.svg"
-                    // iconAlt="email"
-
                     />
                     <CustomFormField
                         fieldType={FormFieldType.SKELETON}
@@ -144,17 +141,52 @@ const RegisterForm = ({ user }: { user: User }) => {
 
                             </FormControl>
                         )}
+                    />
+                </div>
+
+                <div className="flex flex-col gap-6 xl:flex-row ">
+                    <CustomFormField
+                        fieldType={FormFieldType.INPUT}
+                        control={form.control}
+                        name="address"
+                        label="address"
+                        placeholder="123 Main Street"
 
                     />
-
-
+                    <CustomFormField
+                        fieldType={FormFieldType.INPUT}
+                        control={form.control}
+                        name="occupation"
+                        label="Occupation"
+                        placeholder="Software Engineer"
+                    />
                 </div>
                 <div className="flex flex-col gap-6 xl:flex-row ">
-
+                    <CustomFormField
+                        fieldType={FormFieldType.INPUT}
+                        control={form.control}
+                        name="emergencyContactName"
+                        label="Emergency Contact Name"
+                        placeholder="Guardian Name"
+                        iconAlt="Name"
+                    />
+                    <CustomFormField
+                        fieldType={FormFieldType.PHONE_INPUT}
+                        control={form.control}
+                        name="emergencyContact"
+                        label="Emergency Contact"
+                        placeholder="999-888-7776"
+                        iconAlt="phone"
+                    />
                 </div>
-                <div className="flex flex-col gap-6 xl:flex-row ">
 
-                </div>
+                {/*//* section - 3 */}
+
+                <section className="space-y-6">
+                    <div className="mb-9 space-y-1" >
+                        <h2 className="sub-header" >Medical Information</h2>
+                    </div>
+                </section>
                 <div className="flex flex-col gap-6 xl:flex-row ">
 
                 </div>
