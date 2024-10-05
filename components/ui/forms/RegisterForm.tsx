@@ -14,8 +14,10 @@ import { useRouter } from "next/navigation"
 import { createUser } from "@/lib/actions/patient.action"
 import { FormFieldType } from "./PatientForm"
 import { RadioGroup, RadioGroupItem } from "../radio-group"
-import { GenderOptions } from "@/constants"
+import { Doctors, GenderOptions } from "@/constants"
 import { Label } from "../label"
+import { SelectItem } from "@radix-ui/react-select"
+import Image from "next/image"
 
 
 const RegisterForm = ({ user }: { user: User }) => {
@@ -187,6 +189,33 @@ const RegisterForm = ({ user }: { user: User }) => {
                         <h2 className="sub-header" >Medical Information</h2>
                     </div>
                 </section>
+                <CustomFormField
+                    fieldType={FormFieldType.SELECT}
+                    control={form.control}
+                    name="primaryPhysician"
+                    label="Primary Physician"
+                    placeholder="Select a physician"
+
+                >
+
+                    {Doctors.map((doctor) => (
+                        <SelectItem key={doctor.name} value={doctor.name} >
+                            <div className="flex items-center cursor-pointer m-2 gap-3" >
+                                <Image
+                                    src={doctor.image}
+                                    alt={doctor.name}
+                                    width={32}
+                                    height={32}
+                                    className="rounded-full border-dark-500 border"
+                                />
+                                <p>{doctor.name}</p>
+                                <span  className="text-dark-600 text-sm">
+                                    {doctor.speciality}
+                                </span>
+                            </div>
+                        </SelectItem>
+                    ))}
+                </CustomFormField>
                 <div className="flex flex-col gap-6 xl:flex-row ">
 
                 </div>
