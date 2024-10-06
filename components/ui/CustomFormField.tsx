@@ -19,6 +19,7 @@ import { E164Number } from "libphonenumber-js/core";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { Select, SelectContent, SelectTrigger, SelectValue } from "./select"
+import { Textarea } from "./textarea"
 // import { Select, SelectContent, SelectTrigger, SelectValue } from "@radix-ui/react-select"
 
 interface CustomProps {
@@ -63,8 +64,18 @@ const RenderField = ({ field, props }: { field: any, props: CustomProps }) => {
                         />
                     </FormControl>
                 </div>
-            )
-
+            );
+        case FormFieldType.TEXTAREA:
+            return (
+                <FormControl>
+                    <Textarea
+                        placeholder={props.placeholder}
+                        {...field}
+                        className="shad-textArea"
+                        disabled={props.disabled}
+                    />
+                </FormControl>
+            );
         case FormFieldType.PHONE_INPUT:
             return (
                 <FormControl>
@@ -81,7 +92,7 @@ const RenderField = ({ field, props }: { field: any, props: CustomProps }) => {
 
                     />
                 </FormControl>
-            )
+            );
         case FormFieldType.DATE_PICKER:
 
             return (
@@ -105,7 +116,6 @@ const RenderField = ({ field, props }: { field: any, props: CustomProps }) => {
                     </FormControl>
                 </div>
             );
-
         case FormFieldType.SELECT:
             return (
                 <FormControl>
@@ -125,7 +135,7 @@ const RenderField = ({ field, props }: { field: any, props: CustomProps }) => {
             return (
 
                 renderSkeleton ? renderSkeleton(field) : null
-            )
+            );
         default:
             break;
     }

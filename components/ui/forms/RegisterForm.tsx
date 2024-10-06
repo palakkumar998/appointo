@@ -194,9 +194,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                     control={form.control}
                     name="primaryPhysician"
                     label="Primary Physician"
-                    placeholder="Select a physician"
-
-                >
+                    placeholder="Select a physician">
 
                     {Doctors.map((doctor) => (
                         <SelectItem key={doctor.name} value={doctor.name} >
@@ -209,7 +207,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                                     className="rounded-full border-dark-500 border"
                                 />
                                 <p>{doctor.name}</p>
-                                <span  className="text-dark-600 text-sm">
+                                <span className="text-dark-600 text-sm">
                                     {doctor.speciality}
                                 </span>
                             </div>
@@ -217,7 +215,38 @@ const RegisterForm = ({ user }: { user: User }) => {
                     ))}
                 </CustomFormField>
                 <div className="flex flex-col gap-6 xl:flex-row ">
+                    <CustomFormField
+                        fieldType={FormFieldType.INPUT}
+                        control={form.control}
+                        name="insuranceProvider"
+                        label="Insurance Provider"
+                        placeholder="Max life insurance"
 
+                    />
+                    <CustomFormField
+                        fieldType={FormFieldType.INPUT}
+                        control={form.control}
+                        name="insurancePolicyNumber"
+                        label="Insurance Policy Number"
+                        placeholder="23AX1998002024"
+                    />
+                </div>
+                <div className="flex flex-col gap-6 xl:flex-row ">
+                    <CustomFormField
+                        fieldType={FormFieldType.TEXTAREA}
+                        control={form.control}
+                        name="allergies"
+                        label="Allergies (if any)"
+                        placeholder="Peanuts, Milk, Red Meat, etc."
+
+                    />
+                    <CustomFormField
+                        fieldType={FormFieldType.TEXTAREA}
+                        control={form.control}
+                        name="currentMedication"
+                        label="Current Medication"
+                        placeholder="Ketakonazole, Nystatin, etc."
+                    />
                 </div>
 
                 <SubmitButton isLoading={isLoading}>
